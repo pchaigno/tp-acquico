@@ -118,24 +118,24 @@ L’arbre non-élagué obtient un meilleur taux de risque réel (40\%) comparé 
 L'hypothèse ici utilisée est que les attributs n'ont pas d'influence les uns sur les autres.
 
 \subsubsection*{\'Etape 2}
-Pour les attributs numériques que sont température et humidité, le modèle nous fournit une estimation des paramètres de leurs lois gaussiennes respectives.
+Pour les attributs numériques que sont \textit{température} et \textit{humidité}, le modèle nous fournit une estimation des paramètres de leurs lois gaussiennes respectives. Pour les attributs nominaux ou booléen (\textit{outlook} et \textit{windy}), l'estimateur de Laplace est utilisé.
 
 \subsubsection*{\'Etape 3}
-Selon Weka, cette exemple est associé au label non.
+Selon Weka, cette exemple est associé au label non. Aussi, l'arbre de décision élagué construit précédemment l'aurait également dans cette catégorie.
 
 \subsubsection*{\'Etape 4}
-A partir des exemples du fichier weather.arff découpant en un ensemble d'apprentissage (deux tiers) et un ensemble de test (un tiers), on obtient un taux d'erreur réel de 40\% ce qui est comparable avec les résultats obtenus grâce aux arbres.
+A partir des exemples du fichier \textit{weather.arff} découpant en un ensemble d'apprentissage (deux tiers) et un ensemble de test (un tiers), on obtient un taux d'erreur réel de 40\% ce qui est comparable avec les résultats obtenus grâce aux arbres. 
 
 \subsection{Approche non paramétrique}
 
 \subsubsection*{\'Etape 1}
-L'algorithme IBk associe à un exemple à classer le label le plus présent parmi ses plus proches voisins.
+L'algorithme IBk associe à un exemple à classer le label le plus présent parmi ses plus proches voisins dont le nombre est ici choisi à 1. Le label considéré comme étant le plus présent parmi un ensemble de voisins peut être choisi selon divers critères. 
 
 \subsubsection*{\'Etape 2}
 L'algorithme IB1 parvient à classer correctement 96\% des exemples de l'ensemble de test.
 
-\subsubsection*{\'Etape 3}
-L'algorithme 2-NN fournit les mêmes résultats. Augmenter la valeur de HDRank les améliore.
+\subsubsection*{\'Etape 3 et 4}
+L'algorithme 2-NN fournit les mêmes résultats. On peut cependant augmenter d'avantage le nombre de voisins pour les améliorer.
 
 %\section{Fusion de classifieurs}
 
