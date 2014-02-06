@@ -7,6 +7,9 @@
 \definecolor{teal}{rgb}{0.0,0.5,0.5}
 \definecolor{violet}{rgb}{0.5,0,0.5}
 \usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[francais]{babel}
+\usepackage[babel=true]{csquotes}
 
 \title{TP1 - Apprentissage supervisé}
 \author{\textsc{Paul Chaignon} - \textsc{Ulysse Goarant}}
@@ -63,15 +66,15 @@ Le fichier \textit{weather.nominal.arff} contient 14 instances.
 Ils ont chacun 5 attributs dont 4 de type nominal et 1 de type booléen.
 La classe à prédire est « play ».
 
-\subsubsection*{\'Etape 2 & 3}
+\subsubsection*{\'Etape 2 \& 3}
 40\% des données de test ont bien été classées.
 La matrice de confusion nous indique que le classement a été plus efficace à classer les \enquote{yes}.
 % TODO Add reference to figure.
 \begin{figure}
 	\center
-	\includegraphics[width=1\textwidth]{graphe-1.png}
+	\includegraphics[width=1\textwidth]{arbre-1.png}
 	\caption{Arbre de décision J48}
-	\label{fig:graphe-1}
+	\label{fig:arbre-1}
 \end{figure}
 
 \subsubsection*{\'Etape 4}
@@ -79,9 +82,9 @@ En réduisant la part de l’ensemble des données d’apprentissage à 40\% et 
 % TODO Add reference to figure.
 \begin{figure}
 	\center
-	\includegraphics[width=1\textwidth]{graphe-2.png}
+	\includegraphics[width=1\textwidth]{arbre-2.png}
 	\caption{Amélioration de l'arbre de décision J48}
-	\label{fig:graphe-2}
+	\label{fig:arbre-2}
 \end{figure}
 
 \subsubsection*{\'Etape 5}
