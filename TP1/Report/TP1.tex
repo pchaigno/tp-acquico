@@ -115,18 +115,24 @@ L’arbre non-élagué obtient un meilleur taux de risque réel (40\%) comparé 
 L'hypothèse ici utilisée est que les attributs n'ont pas d'influence les uns sur les autres.
 
 \subsubsection*{\'Etape 2}
-
+Pour les attributs numériques que sont température et humidité, le modèle nous fournit une estimation des paramètres de leurs lois gaussiennes respectives.
 
 \subsubsection*{\'Etape 3}
-
+Selon Weka, cette exemple est associé au label non.
 
 \subsubsection*{\'Etape 4}
-
-
+A partir des exemples du fichier weather.arff découpant en un ensemble d'apprentissage (deux tiers) et un ensemble de test (un tiers), on obtient un taux d'erreur réel de 40\% ce qui est comparable avec les résultats obtenus grâce aux arbres.
 
 \subsection{Approche non paramétrique}
 
+\subsubsection*{\'Etape 1}
+L'algorithme IBk associe à un exemple à classer le label le plus présent parmi ses plus proches voisins.
 
+\subsubsection*{\'Etape 2}
+L'algorithme IB1 parvient à classer correctement 96\% des exemples de l'ensemble de test.
+
+\subsubsection*{\'Etape 3}
+% C'est quoi ce 2-NN ???
 
 \section{Fusion de classifieurs}
 
