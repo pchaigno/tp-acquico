@@ -1,0 +1,51 @@
+fille_de(ann, mary).
+fille_de(ann, ann).
+fille_de(ann, tom).
+fille_de(ann, lisa).
+fille_de(ann, rosy).
+fille_de(ann, eve).
+fille_de(ann, bob).
+
+fille_de(mary, mary).
+fille_de(mary, tom).
+fille_de(mary, lisa).
+fille_de(mary, rosy).
+fille_de(mary, eve).
+fille_de(mary, bob).
+
+fille_de(tom, mary).
+fille_de(tom, ann).
+fille_de(tom, tom).
+fille_de(tom, lisa).
+fille_de(tom, rosy).
+fille_de(tom, eve).
+fille_de(tom, bob).
+
+fille_de(rosy, ann).
+fille_de(rosy, tom).
+fille_de(rosy, lisa).
+fille_de(rosy, rosy).
+fille_de(rosy, eve).
+fille_de(rosy, bob).
+
+fille_de(eve, mary).
+fille_de(eve, ann).
+fille_de(eve, lisa).
+fille_de(eve, rosy).
+fille_de(eve, eve).
+fille_de(eve, bob).
+
+fille_de(lisa, mary).
+fille_de(lisa, ann).
+fille_de(lisa, lisa).
+fille_de(lisa, rosy).
+fille_de(lisa, eve).
+fille_de(lisa, bob).
+
+fille_de(bob, mary).
+fille_de(bob, ann).
+fille_de(bob, tom).
+fille_de(bob, lisa).
+fille_de(bob, rosy).
+fille_de(bob, eve).
+fille_de(bob, bob).
