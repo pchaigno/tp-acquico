@@ -22,8 +22,9 @@ binmode(STDERR,':utf8'); # si le terminal est en utf8
 
 my $unique = $$;
 my $prg = $0;
-if ($0 =~ /.+\/([^\/]+\.[^\.\/]+)$/)
-  { $prg = $1 }
+if($0 =~ /.+\/([^\/]+\.[^\.\/]+)$/) {
+	$prg = $1;
+}
 
 my $verbose = 2;
 
@@ -63,14 +64,17 @@ argument
 
 die $usage unless ($#ARGV > 2);
 
-while ($#ARGV > -1 and $ARGV[0] =~ /^-/) {
-  $_ = shift;
-  if (/^-out/)                { $prefix = shift }
-  elsif (/^-in/)              { $file_in = shift }
-
-  elsif (/^-?-he/)            { die $usage }
-
-  else                        { die "unknown option $_!\n $usage\n" }
+while($#ARGV > -1 and $ARGV[0] =~ /^-/) {
+	$_ = shift;
+	if(/^-out/) {
+		$prefix = shift;
+	} elsif(/^-in/) {
+		$file_in = shift;
+	} elsif(/^-?-he/) {
+		die $usage;
+	} else {
+		die "unknown option $_!\n $usage\n";
+	}
 }
 
 
@@ -91,41 +95,41 @@ open(NEG,"> $prefix.n") or die "$prg unable to write $prefix.n $!\n";
 my $nb_ex = 0;
 my $ident = '';
 while(<IN>) {
-    if (/^([1-4]),([0-9]+),([1-4]),([0-9]+),([1-4]),([0-9]+),([1-4]),([0-9]+),([1-4]),([0-9]+),([0-9])/) {
-		my @couleurs = (Trans_couleur($1), Trans_couleur($3), Trans_couleur($5), Trans_couleur($7), Trans_couleur($9));
-		my @valeurs = (Trans_valeur($2), Trans_valeur($4), Trans_valeur($6), Trans_valeur($8), Trans_valeur($10));
-		my $figure = Trans_main($11);
+	if(/^([1-4]),([0-9]+),([1-4]),([0-9]+),([1-4]),([0-9]+),([1-4]),([0-9]+),([1-4]),([0-9]+),([0-9])/) {
+			my @couleurs = (Trans_couleur($1), Trans_couleur($3), Trans_couleur($5), Trans_couleur($7), Trans_couleur($9));
+			my @valeurs = (Trans_valeur($2), Trans_valeur($4), Trans_valeur($6), Trans_valeur($8), Trans_valeur($10));
+			my $figure = Trans_main($11);
 
-		$nb_ex++;
-		$ident = 'main'.$nb_ex;
-		my $bool_desc;
-		my $carteIdent;
+			$nb_ex++;
+			$ident = 'main'.$nb_ex;
+			my $bool_desc;
+			my $carteIdent;
 
-		# ici completer en inscrivant les exemples (pos et neg) dans les fichiers POS et NEG
-		# et leur description dans le BK,
+			# ici completer en inscrivant les exemples (pos et neg) dans les fichiers POS et NEG
+			# et leur description dans le BK,
 
-		if($figure eq 'carre') {
-			print POS "carre($ident).\n";
-			$bool_desc = 1;
-		} elsif($figure eq 'rien' and int rand 1000 == 0) {
-			print NEG "carre($ident).\n";
-			$bool_desc = 1;
-		} elsif($figure ne 'rien' and int rand 50 == 0) {
-			print NEG "carre($ident).\n";
-			$bool_desc = 1;
-		}
-
-		if($bool_desc) {
-			foreach my $i (0..4) {
-				$carteIdent = "carte_${nb_ex}_$i";
-				print BK "a_carte($ident, $carteIdent).\n";
-				print BK "valeur($carteIdent, $valeurs[$i]).\n";
-				print BK "couleur($carteIdent, $couleurs[$i]).\n";
+			if($figure eq 'carre') {
+				print POS "carre($ident).\n";
+				$bool_desc = 1;
+			} elsif($figure eq 'rien' and int rand 1000 == 0) {
+				print NEG "carre($ident).\n";
+				$bool_desc = 1;
+			} elsif($figure ne 'rien' and int rand 50 == 0) {
+				print NEG "carre($ident).\n";
+				$bool_desc = 1;
 			}
-		}
-    } else {
-    	print STDERR "$prg: pb ligne au format inconnu :\n$_\n\n";
-    }
+
+			if($bool_desc) {
+				foreach my $i (0..4) {
+					$carteIdent = "carte_${nb_ex}_$i";
+					print BK "a_carte($ident, $carteIdent).\n";
+					print BK "valeur($carteIdent, $valeurs[$i]).\n";
+					print BK "couleur($carteIdent, $couleurs[$i]).\n";
+				}
+			}
+	} else {
+		print STDERR "$prg: pb ligne au format inconnu :\n$_\n\n";
+	}
 }
 close IN;
 close POS;
@@ -155,9 +159,6 @@ close START;
 ##                                                                              ##
 ##################################################################################
 ##################################################################################
-
-
-
 sub Trans_valeur {
   my $valeur = shift;
 
