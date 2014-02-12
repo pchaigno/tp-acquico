@@ -1,4 +1,2 @@
 :- ['../aleph.pl'].
-:- read_all(poker).
-:- set(recordfile,'poker.res').
-:- set(verbose,0).
+:- read_all(poker), set(recordfile,'poker.res'), set(verbose,0), induce.

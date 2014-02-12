@@ -1,2 +1,5 @@
 Thumbs.db
-poker.*
+TP2/exemple-poker/poker.*
+*.aux
+*.log
+*.synctex.gz

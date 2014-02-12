@@ -28,14 +28,14 @@
 %       + or - are followed by type of each argument
 %       in this example, the type "int" is a built-in unary predicate
 :- modeh(1, carre(+main)).
+:- modeh(1, paire(+main)).
+:- modeh(1, suite(+main)).
+:- modeh(1, brelan(+main)).
+
 :- modeb(1, cartes(+main, main(-carte, -carte, -carte, -carte, -carte))).
-:- modeb(1, cartes(-main, main(+carte, +carte, +carte, +carte, +carte))).
 :- modeb(5, a_carte(+main, -carte)).
-:- modeb(1, a_carte(-main, +carte)).
 :- modeb(1, couleur(+carte, -couleur)).
-:- modeb(*, couleur(-carte, +couleur)).
 :- modeb(1, valeur(+carte, -valeur)).
-:- modeb(*, valeur(-carte, +valeur)).
 
 :- determination(carre/1, cartes/2).
 :- determination(carre/1, a_carte/2).
@@ -45,16 +45,34 @@
 cartes(Jeu, main(C1, C2, C3, C4, C5)):-
 	a_carte(Jeu, C1),
 	a_carte(Jeu, C2),
-	a_carte(Jeu, C3),
-	a_carte(Jeu, C4),
-	a_carte(Jeu, C5),
 	C1 \== C2,
+	a_carte(Jeu, C3),
 	C1 \== C3,
 	C2 \== C3,
+	a_carte(Jeu, C4),
 	C1 \== C4,
 	C2 \== C4,
 	C3 \== C4,
+	a_carte(Jeu, C5),
 	C1 \== C5,
 	C2 \== C5,
 	C3 \== C5,
 	C4 \== C5.
+
+valeur(as).
+valeur(deux).
+valeur(trois).
+valeur(quatre).
+valeur(cinq).
+valeur(six).
+valeur(sept).
+valeur(huit).
+valeur(neuf).
+valeur(dix).
+valeur(valet).
+valeur(dame).
+valeur(roi).
+couleur(coeur).
+couleur(pique).
+couleur(carreau).
+couleur(trefle).

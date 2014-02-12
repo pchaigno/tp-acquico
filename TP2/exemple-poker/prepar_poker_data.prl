@@ -111,17 +111,39 @@ while(<IN>) {
 			if($figure eq 'carre') {
 				print POS "carre($ident).\n";
 				$bool_desc = 1;
-			} elsif($figure eq 'rien' and int rand 1000 == 0) {
-				print NEG "carre($ident).\n";
+			} elsif($figure eq 'rien') {
+				if(int rand 100 == 0) {
+					print NEG "carre($ident).\n";
+					print NEG "paire($ident).\n";
+					print NEG "suite($ident).\n";
+					print NEG "brelan($ident).\n";
+					$bool_desc = 1;
+				}
+			} elsif($figure eq 'paire') {
+				if(int rand 100 == 0) {
+					print POS "paire($ident).\n";
+					$bool_desc = 1;
+				}
+			} elsif($figure eq 'suite') {
+				print POS "suite($ident).\n";
 				$bool_desc = 1;
-			} elsif($figure ne 'rien' and int rand 50 == 0) {
+			} elsif($figure eq 'brelan') {
+				if(int rand 2 == 0) {
+					print POS "brelan($ident).\n";
+					$bool_desc = 1;
+				}
+			} elsif(int rand 50 == 0) {
 				print NEG "carre($ident).\n";
+				print NEG "paire($ident).\n";
+				print NEG "suite($ident).\n";
+				print NEG "brelan($ident).\n";
 				$bool_desc = 1;
 			}
 
 			if($bool_desc) {
 				foreach my $i (0..4) {
 					$carteIdent = "carte_${nb_ex}_$i";
+					print BK "carte($carteIdent).\n";
 					print BK "a_carte($ident, $carteIdent).\n";
 					print BK "valeur($carteIdent, $valeurs[$i]).\n";
 					print BK "couleur($carteIdent, $couleurs[$i]).\n";
@@ -143,9 +165,7 @@ close BK;
 # et taper 'induce.' ou 'sat(1), reduce.' a l'invite de yap
 open(START,"> $prefix.start") or die "$prg unable to write $prefix.start $!\n";
 print START ":- ['$aleph'].\n";
-print START ":- read_all($prefix).\n";
-print START ":- set(recordfile,'$prefix.res').\n";
-print START ":- set(verbose,0).\n";
+print START ":- read_all($prefix), set(recordfile,'$prefix.res'), set(verbose,0), induce.\n";
 close START;
 
 
