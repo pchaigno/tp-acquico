@@ -115,7 +115,31 @@ fille(rosy).
 fille(lisa).
 \end{lstlisting}
 
+Ci-dessous se trouve la réponse fournie par Aleph. Il a en fait créé des règles spécifiques à chaque exemple positif et n'a donc pas réussi à généraliser le concept de \textit{fille de}.
+
+\begin{lstlisting}[frame=single]
+[Rule 1] [Pos cover = 1 Neg cover = 0]
+fille_de(mary,ann).
+
+[Rule 2] [Pos cover = 1 Neg cover = 0]
+fille_de(rosy,mary).
+
+[Rule 3] [Pos cover = 1 Neg cover = 0]
+fille_de(eve,tom).
+
+[Rule 4] [Pos cover = 1 Neg cover = 0]
+fille_de(lisa,tom).
+\end{lstlisting}
+
 \section{Les figures du Poker}
 
+La règle obtenue pour la détermination du carré est la suivante.
+
+\begin{lstlisting}[frame=single]
+[Rule 1] [Pos cover = 236 Neg cover = 0]
+carre(A) :-
+   cartes(A,main(B,C,D,E,F)), valeur(E,G), valeur(D,G), valeur(C,G), 
+   valeur(B,G).
+\end{lstlisting}
 
 \end{document}
