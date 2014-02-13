@@ -23,7 +23,28 @@
 
 \section{Prise en main - Les trains de Michalsky}
 
-2. L'opérateur de raffinement d'Aleph a une approche bottom-up.
+Ci-dessous le prédicat calculé à la fin de $sat(1).$
+\begin{lstlisting}[frame=single]
+eastbound(A) :-
+   has_car(A,B), has_car(A,C), has_car(A,D), has_car(A,E),
+   short(E), short(C), closed(C), long(D),
+   long(B), open_car(E), open_car(D), open_car(B),
+   shape(E,rectangle), shape(D,rectangle),
+   shape(C,rectangle), shape(B,rectangle),
+   wheels(E,2), wheels(D,3), wheels(C,2), wheels(B,2),
+   load(E,circle,1), load(D,hexagon,1), load(C,triangle,1),
+   load(B,rectangle,3).
+\end{lstlisting}
+
+Ci-dessous le prédicat calculé à la fin de $reduce.$
+\begin{lstlisting}[frame=single]
+eastbound(A) :-
+   has_car(A,B), short(B), closed(B).
+\end{lstlisting}
+
+L'opérateur de raffinement d'Aleph a une approche bottom-up.
+En effet, le premier prédicat calculé suite à $sat(1).$ est beaucoup plus spécifique que le second.
+La second étape $reduce.$ permet de généraliser ce prédicat.
 
 \section{Une affaire de famille}
 Nos exemples positifs sont les suivants.
