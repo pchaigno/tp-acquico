@@ -1,0 +1,38 @@
+Q2
+1. Un exemple trop spécifique tel que Pluton modifie fortement la structure du treillis.
+2. L'exception a autant d'importance que les règles.
+
+Q3
+"show only exact matches" compte les exemples qui possèdent exactement les attributs en intention.
+"show all matches" compte les exemples qui possèdent l'attribut.
+
+Q4
+Taille des disques durs :
+type d'échelle : numérique
+type d'attributs : numérique
+
+Bus système :
+type d'échelle : nominal
+type d'attributs : nominal
+
+Moyen de distribution :
+type d'échelle : nominal
+type d'attributs : booléen
+
+Q5
+La base d'implication est logiquement contunue dans les règles extraites
+
+Q6
+Il ressemble à un bouquet de taxus baccata, mais bien mûr. Il n'est évidemment pas visuellement exploitable.
+
+Q8
+Le contexte contient 628 objets, 6 attributs.
+
+Q9
+En utilisant la navigation dans la propriété éditeur, on trouve que le nombre de séries par éditeur est de 11 à 72 selon ce dernier. Selon la même méthode et la propriété dessinateur, on détermine que le dessinateur ayant le plus de comics est Corben (Richard).
+
+Q10
+En naviguant dans la propriété 'Note /5', on trouve que les 
+
+Q12
+A l'aide de la requête "not Genre ?", on trouve que "Blondie" n'a pas de genre.
