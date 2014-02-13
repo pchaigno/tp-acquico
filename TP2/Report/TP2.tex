@@ -116,7 +116,8 @@ fille(rosy).
 fille(lisa).
 \end{lstlisting}
 
-Ci-dessous se trouve la réponse fournie par Aleph. Il a en fait créé des règles spécifiques à chaque exemple positif et n'a donc pas réussi à généraliser le concept de \textit{fille de}.
+Ci-dessous se trouve la réponse fournie par Aleph.
+Il a en fait créé des règles spécifiques à chaque exemple positif et n'a donc pas réussi à généraliser le concept de \textit{fille de}.
 
 \begin{lstlisting}[frame=single]
 [Rule 1] [Pos cover = 1 Neg cover = 0]
@@ -142,5 +143,12 @@ carre(A) :-
    cartes(A,main(B,C,D,E,F)), valeur(E,G), valeur(D,G), valeur(C,G), 
    valeur(B,G).
 \end{lstlisting}
+
+Même en augmentant le nombre d'exemples positifs et négatifs Aleph n'a pas réussi à déterminer une règle pour paire, brelan ou suite.
+Ces figures sont plus difficiles à faire apprendre car le point commun des exemples positifs est plus complexe.
+
+La suite impose d'avoir conscience de la relation d'ordre sur les valeurs que Aleph ne connait pas.
+Les figures paire et brelan ne peuvent être des carrés.
+Il faut donc comprendre que les paires, par exemple, ont uniquement deux valeurs identiques et pas plus.
 
 \end{document}
