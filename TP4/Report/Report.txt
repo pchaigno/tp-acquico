@@ -130,7 +130,7 @@ Best rules found:
  9. outlook=rainy play=yes 3 ==> windy=FALSE 3    conf:(1) lift:(1.75) lev:(    conf:(0.86) lift:(1.33) lev:(0.11) [1] < conv:(1.25)>0.09) [1] < conv:(1.29)>
 10. humidity=normal 7 ==> play=yes 6
 
-Q3 Conviction can be interpreted as the ratio of the expected frequency that X occurs without Y (that is to say, the frequency that the rule makes an incorrect prediction) if X and Y were independent divided by the observed frequency of incorrect predictions.
+Q1.3 Conviction can be interpreted as the ratio of the expected frequency that X occurs without Y (that is to say, the frequency that the rule makes an incorrect prediction) if X and Y were independent divided by the observed frequency of incorrect predictions.
 
 Q1.8
 === Run information ===
