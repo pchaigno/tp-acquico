@@ -12,217 +12,32 @@
 \usepackage[babel=true]{csquotes}
 \usepackage{listings}
 
-\title{TP4 - Génération de règles d'association}
+\title{TP4 : Génération de règles d'association}
 \author{\textsc{Paul Chaignon} - \textsc{Ulysse Goarant}}
 \date{\today}
 
 \begin{document}
-\lstset{language=Prolog, breaklines=true}
 
 \maketitle
 
 \section{Fouille de données sous Weka}
 
-\subsection*{Question 1.1}
+%\subsection{Test de Weka avec l'exemple du golf}
 
-% TODO Answer the question.
-=== Run information ===
+\subsubsection*{Question 1.1}
+Weka détermine les itemsets fréquents (en indiquant leur nombre par taille) et les règles associées de confiance suffisante.
 
-Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.9 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -c -1
-Relation:     weather.symbolic
-Instances:    14
-Attributes:   5
-              outlook
-              temperature
-              humidity
-              windy
-              play
-=== Associator model (full training set) ===
+\subsubsection*{Question 1.2}
+En fonction de la mesure, les règles générées varient. Certaines sont cependant communes à des mesures différentes.
 
+\subsubsection*{Question 1.3}
+Règle : outlook=overcast ==> play=yes
+Calcul de la confiance : N(outlook=overcast et play=yes)/N(outlook=overcast)=4/4=1
+Calcul du lift : N(omega)*N(outlook=overcast et play=yes)/N(outlook=overcast)*N(play=yes)=(70*4)/(4*4)=17.5
+Calcul du levier : P(outlook=overcast et play=yes) - P(outlook=overcast)*P(play=yes)=
 
-Apriori
-=======
-
-Minimum support: 0.15 (2 instances)
-Minimum metric <confidence>: 0.9
-Number of cycles performed: 17
-
-Generated sets of large itemsets:
-
-Size of set of large itemsets L(1): 12
-
-Size of set of large itemsets L(2): 47
-
-Size of set of large itemsets L(3): 39
-
-Size of set of large itemsets L(4): 6
-
-Best rules found:
-
- 1. outlook=overcast 4 ==> play=yes 4    conf:(1)
- 2. temperature=cool 4 ==> humidity=normal 4    conf:(1)
- 3. humidity=normal windy=FALSE 4 ==> play=yes 4    conf:(1)
- 4. outlook=sunny play=no 3 ==> humidity=high 3    conf:(1)
- 5. outlook=sunny humidity=high 3 ==> play=no 3    conf:(1)
- 6. outlook=rainy play=yes 3 ==> windy=FALSE 3    conf:(1)
- 7. outlook=rainy windy=FALSE 3 ==> play=yes 3    conf:(1)
- 8. temperature=cool play=yes 3 ==> humidity=normal 3    conf:(1)
- 9. outlook=sunny temperature=hot 2 ==> humidity=high 2    conf:(1)
-10. temperature=hot play=no 2 ==> outlook=sunny 2    conf:(1)
-
-
-\subsection*{Question 1.2}
-
-% TODO Answer the question.
-Apriori
-=======
-
-Minimum support: 0.3 (4 instances)
-Minimum metric <lift>: 1.1
-Number of cycles performed: 14
-
-Generated sets of large itemsets:
-
-Size of set of large itemsets L(1): 12
-
-Size of set of large itemsets L(2): 9
-
-Size of set of large itemsets L(3): 1
-
-Best rules found:
-
- 1. temperature=cool 4 ==> humidity=normal 4    conf:(1) < lift:(2)> lev:(0.14) [2] conv:(2)
- 2. humidity=normal 7 ==> temperature=cool 4    conf:(0.57) < lift:(2)> lev:(0.14) [2] conv:(1.25)
- 3. humidity=high 7 ==> play=no 4    conf:(0.57) < lift:(1.6)> lev:(0.11) [1] conv:(1.13)
- 4. play=no 5 ==> humidity=high 4    conf:(0.8) < lift:(1.6)> lev:(0.11) [1] conv:(1.25)
- 5. outlook=overcast 4 ==> play=yes 4    conf:(1) < lift:(1.56)> lev:(0.1) [1] conv:(1.43)
- 6. play=yes 9 ==> outlook=overcast 4    conf:(0.44) < lift:(1.56)> lev:(0.1) [1] conv:(1.07)
- 7. humidity=normal windy=FALSE 4 ==> play=yes 4    conf:(1) < lift:(1.56)> lev:(0.1) [1] conv:(1.43)
- 8. play=yes 9 ==> humidity=normal windy=FALSE 4    conf:(0.44) < lift:(1.56)> lev:(0.1) [1] conv:(1.07)
- 9. humidity=normal 7 ==> play=yes 6    conf:(0.86) < lift:(1.33)> lev:(0.11) [1] conv:(1.25)
-10. play=yes 9 ==> humidity=normal 6    conf:(0.67) < lift:(1.33)> lev:(0.11) [1] conv:(1.13)
-
-
-Apriori
-=======
-
-Minimum support: 0.3 (4 instances)
-Minimum metric <leverage>: 0.1
-Number of cycles performed: 14
-
-Generated sets of large itemsets:
-
-Size of set of large itemsets L(1): 12
-
-Size of set of large itemsets L(2): 9
-
-Size of set of large itemsets L(3): 1
-
-Best rules found:
-
- 1. temperature=cool 4 ==> humidity=normal 4    conf:(1) lift:(2) < lev:(0.14) [2]> conv:(2)
- 2. humidity=normal 7 ==> temperature=cool 4    conf:(0.57) lift:(2) < lev:(0.14) [2]> conv:(1.25)
- 3. humidity=normal 7 ==> play=yes 6    conf:(0.86) lift:(1.33) < lev:(0.11) [1]> conv:(1.25)
- 4. play=yes 9 ==> humidity=normal 6    conf:(0.67) lift:(1.33) < lev:(0.11) [1]> conv:(1.13)
- 5. humidity=high 7 ==> play=no 4    conf:(0.57) lift:(1.6) < lev:(0.11) [1]> conv:(1.13)
- 6. play=no 5 ==> humidity=high 4    conf:(0.8) lift:(1.6) < lev:(0.11) [1]> conv:(1.25)
- 7. outlook=overcast 4 ==> play=yes 4    conf:(1) lift:(1.56) < lev:(0.1) [1]> conv:(1.43)
- 8. play=yes 9 ==> outlook=overcast 4    conf:(0.44) lift:(1.56) < lev:(0.1) [1]> conv:(1.07)
- 9. humidity=normal windy=FALSE 4 ==> play=yes 4    conf:(1) lift:(1.56) < lev:(0.1) [1]> conv:(1.43)
-10. play=yes 9 ==> humidity=normal windy=FALSE 4    conf:(0.44) lift:(1.56) < lev:(0.1) [1]> conv:(1.07)
-
-
-Apriori
-=======
-
-Minimum support: 0.25 (3 instances)
-Minimum metric <conviction>: 1.1
-Number of cycles performed: 15
-
-Generated sets of large itemsets:
-
-Size of set of large itemsets L(1): 12
-
-Size of set of large itemsets L(2): 26
-
-Size of set of large itemsets L(3): 4
-
-Best rules found:
-
- 1. temperature=cool 4 ==> humidity=normal 4    conf:(1) lift:(2) lev:(0.14) [2] < conv:(2)>
- 2. outlook=sunny humidity=high 3 ==> play=no 3    conf:(1) lift:(2.8) lev:(0.14) [1] < conv:(1.93)>
- 3. outlook=sunny play=no 3 ==> humidity=high 3    conf:(1) lift:(2) lev:(0.11) [1] < conv:(1.5)>
- 4. temperature=cool play=yes 3 ==> humidity=normal 3    conf:(1) lift:(2) lev:(0.11) [1] < conv:(1.5)>
- 5. outlook=overcast 4 ==> play=yes 4    conf:(1) lift:(1.56) lev:(0.1) [1] < conv:(1.43)>
- 6. humidity=normal windy=FALSE 4 ==> play=yes 4    conf:(1) lift:(1.56) lev:(0.1) [1] < conv:(1.43)>
- 7. play=no 5 ==> outlook=sunny humidity=high 3    conf:(0.6) lift:(2.8) lev:(0.14) [1] < conv:(1.31)>
- 8. humidity=high play=no 4 ==> outlook=sunny 3    conf:(0.75) lift:(2.1) lev:(0.11) [1] < conv:(1.29)>
- 9. outlook=rainy play=yes 3 ==> windy=FALSE 3    conf:(1) lift:(1.75) lev:(    conf:(0.86) lift:(1.33) lev:(0.11) [1] < conv:(1.25)>0.09) [1] < conv:(1.29)>
-10. humidity=normal 7 ==> play=yes 6
-
-
-\subsection*{Question 1.3}
-
-% TODO Compute lit, leverage and confidence.
-
-
-\subsection*{Question 1.4}
-
-% TODO Answer the question.
-Conviction can be interpreted as the ratio of the expected frequency that X occurs without Y (that is to say, the frequency that the rule makes an incorrect prediction) if X and Y were independent divided by the observed frequency of incorrect predictions.
-
-
-\subsection*{Question 1.6}
-
-Voir fichier \texit{adult_discretized_Chaignon_Goarant.arff}.
-
-
-\subsection*{Question 1.8}
-
-% TODO Answer the question.
-=== Run information ===
-
-Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.9 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -A -V -c -1
-Relation:     adult1-weka.filters.unsupervised.attribute.Discretize-F-B3-M-1.0-Rfirst-last-weka.filters.unsupervised.attribute.Discretize-F-B3-M-1.0-Rfirst-last-weka.filters.unsupervised.attribute.Remove-R3
-Instances:    250
-Attributes:   14
-              age
-               workclass
-               education
-               education-num
-               marital-status
-               occupation
-               relationship
-               race
-               sex
-               capital-gain
-               capital-loss
-               hours-per-week
-               native-country
-               gain
-=== Associator model (full training set) ===
-
-
-Apriori
-=======
-
-Minimum support: 0.25 (62 instances)
-Minimum metric <confidence>: 0.9
-Number of cycles performed: 15
-
-Generated sets of large itemsets:
-
-Size of set of large itemsets L(1): 13
-
-Size of set of large itemsets L(2): 42
-
-Size of set of large itemsets L(3): 46
-
-Size of set of large itemsets L(4): 24
-
-Size of set of large itemsets L(5): 4
-
-Best rules found:
+\subsubsection{Question 1.8}
+Les obtenues selon les paramètres par défaut sont les suivantes :
 
  1.  marital-status=_Never-married  capital-gain=_faible-gain-placement  capital-loss=_faible-perte-placement 67 ==>  gain=_<=50K 64    conf:(0.96)
  2. age=_jeune  workclass=_Private  capital-gain=_faible-gain-placement 66 ==>  gain=_<=50K 63    conf:(0.95)
@@ -235,21 +50,9 @@ Best rules found:
  9.  marital-status=_Never-married  capital-loss=_faible-perte-placement 71 ==>  gain=_<=50K 66    conf:(0.93)
 10.  workclass=_Private  education-num=_peu-eduque  capital-loss=_faible-perte-placement 70 ==>  gain=_<=50K 65    conf:(0.93)
 
+Elles sont toutes associées à l'attribut \textit{gain=_<=50K}. Ces personnes sont caractérisées entre autres comme étant jeune, d'un niveau de formation modeste, et n'ayant peu ou pas de gains à l'aide de placements.
 
-\subsection*{Question 1.9}
-
-
-
-
-\section{\'Etude de cas : articles de presse}
-
-\subsection*{Question 2.1}
-
-% TODO Answer the question.
-extraction des itemsets.
-
-
-\subsection*{Question 2.2}
-
+\subsubsection{Question 1.9}
+L'option \texit{car} impose que l'attribut à droite dans les règles soit le gain ce qui facilite grande l'interprétation des règles puisque notre objectif était d'obtenir des informations relatives au gain.
 
 \end{document}
