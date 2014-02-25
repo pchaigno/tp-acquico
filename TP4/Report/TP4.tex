@@ -11,6 +11,7 @@
 \usepackage[francais]{babel}
 \usepackage[babel=true]{csquotes}
 \usepackage{listings}
+\usepackage{amsmath}
 
 \title{TP4 - Génération de règles d'association}
 \author{\textsc{Paul Chaignon} - \textsc{Ulysse Goarant}}
@@ -22,45 +23,60 @@
 
 \section{Fouille de données sous Weka}
 
-\subsubsection*{Question 1.1}
+\subsection*{Question 1.1}
 
 Weka détermine les itemsets fréquents (en indiquant leur nombre par taille) et les règles associées de confiance suffisante.
 
 
-\subsubsection*{Question 1.2}
+\subsection*{Question 1.2}
 
 En fonction de la mesure, les règles générées varient.
 Certaines sont cependant communes à des mesures différentes.
 
 
-\subsubsection*{Question 1.3}
+\subsection*{Question 1.3}
 
-Règle : outlook=overcast ==> play=yes
-Calcul de la confiance : N(outlook=overcast et play=yes)/N(outlook=overcast)=4/4=1
-Calcul du lift : N(omega)*N(outlook=overcast et play=yes)/N(outlook=overcast)*N(play=yes)=(70*4)/(4*4)=17.5
-Calcul du levier : P(outlook=overcast et play=yes) - P(outlook=overcast)*P(play=yes)=
+Règle : $outlook=overcast \Rightarrow play=yes$
+
+Calcul de la confiance :
+\begin{displaymath}
+	\frac{N(outlook=overcast \cap play=yes)}{N(outlook=overcast)} = \frac{4}{4} = 1
+\end{displaymath}
+
+Calcul du lift :
+\begin{displaymath}
+	\frac{N(omega) \times N(outlook=overcast \cap play=yes)}{N(outlook=overcast) \times N(play=yes)} = \frac{70 \times 4}{4 \times 4} = 17.5
+\end{displaymath}
+
+Calcul du levier :
+\begin{displaymath}
+	P(outlook=overcast \cap play=yes) - P(outlook=overcast) \times P(play=yes) =
+\end{displaymath}
 
 
-\subsubsection*{Question 1.8}
+
+\subsection*{Question 1.8}
 
 Les règles obtenues selon les paramètres par défaut sont les suivantes :
 
- 1.  marital-status=_Never-married  capital-gain=_faible-gain-placement  capital-loss=_faible-perte-placement 67 ==>  gain=_<=50K 64    conf:(0.96)
- 2. age=_jeune  workclass=_Private  capital-gain=_faible-gain-placement 66 ==>  gain=_<=50K 63    conf:(0.95)
- 3.  marital-status=_Never-married  capital-gain=_faible-gain-placement 74 ==>  gain=_<=50K 70    conf:(0.95)
- 4.  workclass=_Private  education-num=_peu-eduque  capital-gain=_faible-gain-placement 73 ==>  gain=_<=50K 69    conf:(0.95)
- 5. age=_jeune  workclass=_Private 70 ==>  gain=_<=50K 66    conf:(0.94)
- 6.  workclass=_Private  education-num=_peu-eduque  capital-gain=_faible-gain-placement  capital-loss=_faible-perte-placement 67 ==>  gain=_<=50K 63    conf:(0.94)
- 7.  workclass=_Private  education-num=_peu-eduque 76 ==>  gain=_<=50K 71    conf:(0.93)
- 8. age=_jeune  capital-gain=_faible-gain-placement  native-country=_United-States 72 ==>  gain=_<=50K 67    conf:(0.93)
- 9.  marital-status=_Never-married  capital-loss=_faible-perte-placement 71 ==>  gain=_<=50K 66    conf:(0.93)
-10.  workclass=_Private  education-num=_peu-eduque  capital-loss=_faible-perte-placement 70 ==>  gain=_<=50K 65    conf:(0.93)
+\begin{lstlisting}
+	 1.  marital-status=_Never-married  capital-gain=_faible-gain-placement  capital-loss=_faible-perte-placement 67 ==>  gain=_<=50K 64    conf:(0.96)
+	 2. age=_jeune  workclass=_Private  capital-gain=_faible-gain-placement 66 ==>  gain=_<=50K 63    conf:(0.95)
+	 3.  marital-status=_Never-married  capital-gain=_faible-gain-placement 74 ==>  gain=_<=50K 70    conf:(0.95)
+	 4.  workclass=_Private  education-num=_peu-eduque  capital-gain=_faible-gain-placement 73 ==>  gain=_<=50K 69    conf:(0.95)
+	 5. age=_jeune  workclass=_Private 70 ==>  gain=_<=50K 66    conf:(0.94)
+	 6.  workclass=_Private  education-num=_peu-eduque  capital-gain=_faible-gain-placement  capital-loss=_faible-perte-placement 67 ==>  gain=_<=50K 63    conf:(0.94)
+	 7.  workclass=_Private  education-num=_peu-eduque 76 ==>  gain=_<=50K 71    conf:(0.93)
+	 8. age=_jeune  capital-gain=_faible-gain-placement  native-country=_United-States 72 ==>  gain=_<=50K 67    conf:(0.93)
+	 9.  marital-status=_Never-married  capital-loss=_faible-perte-placement 71 ==>  gain=_<=50K 66    conf:(0.93)
+	10.  workclass=_Private  education-num=_peu-eduque  capital-loss=_faible-perte-placement 70 ==>  gain=_<=50K 65    conf:(0.93)
+\end{lstlisting}
 
-Elles sont toutes associées à l'attribut \textit{gain=_<=50K}.
+Elles sont toutes associées à l'attribut \textit{gain=\_<=50K}.
 Ces personnes sont caractérisées entre autres comme étant jeune, d'un niveau de formation modeste, et n'ayant peu ou pas de gains à l'aide de placements.
 
 
-\subsubsection{Question 1.9}
+\subsection*{Question 1.9}
 
 L'option \textit{car} impose que l'attribut à droite dans les règles soit le gain ce qui facilite grande l'interprétation des règles puisque notre objectif était d'obtenir des informations relatives au gain.
 
@@ -68,12 +84,12 @@ L'option \textit{car} impose que l'attribut à droite dans les règles soit le g
 
 \section{\'Etude de cas : articles de presse}
 
-\subsubsection*{Question 2.1}
+\subsection*{Question 2.1}
 
 Le nombre de mots considérés joue un rôle prépondérant dans les calculs au moment de la formation des itemsets fréquents.
 
 
-\subsubsection*{Question 2.2}
+\subsection*{Question 2.2}
 
 Dans notre modélisation, une transaction correspond à un article, les items correspondent aux mots.
 Nous avons écrit un script pour former un fichier \textit{ARFF} à partir d'un ensemble d'articles (un article par ligne).
