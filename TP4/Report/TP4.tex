@@ -36,7 +36,7 @@ Calcul de la confiance : N(outlook=overcast et play=yes)/N(outlook=overcast)=4/4
 Calcul du lift : N(omega)*N(outlook=overcast et play=yes)/N(outlook=overcast)*N(play=yes)=(70*4)/(4*4)=17.5
 Calcul du levier : P(outlook=overcast et play=yes) - P(outlook=overcast)*P(play=yes)=
 
-\subsubsection{Question 1.8}
+\subsubsection*{Question 1.8}
 Les obtenues selon les paramètres par défaut sont les suivantes :
 
  1.  marital-status=_Never-married  capital-gain=_faible-gain-placement  capital-loss=_faible-perte-placement 67 ==>  gain=_<=50K 64    conf:(0.96)
@@ -54,5 +54,12 @@ Elles sont toutes associées à l'attribut \textit{gain=_<=50K}. Ces personnes s
 
 \subsubsection{Question 1.9}
 L'option \texit{car} impose que l'attribut à droite dans les règles soit le gain ce qui facilite grande l'interprétation des règles puisque notre objectif était d'obtenir des informations relatives au gain.
+
+\section{Etude de cas : articles de presse}
+\subsubsection*{Question 2.1}
+Le nombre de mots considérés joue un rôle prépondérant dans les calculs au moment de la formation des itemsets fréquents.
+
+\subsubsection*{Question 2.2}
+Dans notre modélisation, une transaction correspond à un article, les items correspondent aux mots. Nous avons écrit un script pour former un fichier \textit{ARFF} à partir d'un ensemble d'articles (un article par ligne). Les attributs correspondent à la présence ou l'abscence de chacun des mots précédents. En appliquant la méthode d'Apriori, on espère former des règles qui nous indique le sujet d'un article en fonction des mots présents dans celui-ci.
 
 \end{document}
