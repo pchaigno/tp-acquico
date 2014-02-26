@@ -105,27 +105,27 @@ Ainsi pour la liste de mots suivante en rapport avec l'élection présidentielle
 chirac
 jospin
 le_pen
-mammère
+mammere
 premier_tour
 second_tour
-deuxième_tour
-élections_présidentielles
-élection
-présidentiel
+deuxieme_tour
+elections_presidentielles
+election
+presidentiel
 \end{lstlisting}
 
 On obtient les règles suivantes selon APriori :
 \begin{lstlisting}
-	1. deuxième_tour=absent 460 ==> mammère=absent 460    conf:(1)
-	2. second_tour=absent 435 ==> mammère=absent 435    conf:(1)
-	3. élections_présidentielles=absent 431 ==> mammère=absent 431    conf:(1)
-	4. second_tour=absent deuxième_tour=absent 430 ==> mammère=absent 430    conf:(1)
-	5. le_pen=absent 426 ==> mammère=absent 426    conf:(1)
-	6. deuxième_tour=absent élections_présidentielles=absent 426 ==> mammère=absent 426    conf:(1)
-	7. premier_tour=absent 425 ==> mammère=absent 425    conf:(1)
-	8. le_pen=absent deuxième_tour=absent 421 ==> mammère=absent 421    conf:(1)
-	9. premier_tour=absent deuxième_tour=absent 421 ==> mammère=absent 421    conf:(1)
-	10. premier_tour=absent 425 ==> deuxième_tour=absent 421    conf:(0.99)
+	1. deuxieme_tour=absent 460 ==> mammere=absent 460    conf:(1)
+	2. second_tour=absent 435 ==> mammere=absent 435    conf:(1)
+	3. elections_presidentielles=absent 431 ==> mammere=absent 431    conf:(1)
+	4. second_tour=absent deuxieme_tour=absent 430 ==> mammere=absent 430    conf:(1)
+	5. le_pen=absent 426 ==> mammere=absent 426    conf:(1)
+	6. deuxieme_tour=absent elections_presidentielles=absent 426 ==> mammere=absent 426    conf:(1)
+	7. premier_tour=absent 425 ==> mammere=absent 425    conf:(1)
+	8. le_pen=absent deuxieme_tour=absent 421 ==> mammere=absent 421    conf:(1)
+	9. premier_tour=absent deuxieme_tour=absent 421 ==> mammere=absent 421    conf:(1)
+	10. premier_tour=absent 425 ==> deuxieme_tour=absent 421    conf:(0.99)
 \end{lstlisting}
 
 On constate par exemple que si l'article n'évoque pas le premier tour, alors il ne semble pas évoqué le second également.
