@@ -29,11 +29,14 @@ Le treillis associé aux planètes est le suivant :
 
 \includegraphics[width=400px]{question1.png}
 
+On peut remarquer qu'une petite planète est toujours proche du soleil (et inversement).
+Par contre, une planète éloignée du soleil possède forcément un satellite mais l'inverse n'est pas vrai.
+
 
 \subsection*{Question 2}
 
 De part sa spécificité, un exemple tel que Pluton modifie fortement la structure du treillis.
-On en déduit que l'exception a autant d'importance que les règles.
+Cela est du au fait que dans le concept d'analyse formelle, l'exception a autant de poids que la généralité.
 
 
 \subsection*{Question 3}
@@ -42,11 +45,11 @@ On en déduit que l'exception a autant d'importance que les règles.
 
 
 
-\section{Echelle conceptuelle}
+\section{\'Echelle conceptuelle}
 
 \subsection*{Question 4}
 
-La taille des disques durs a une échelle et des attributs de type numérique. Les types de bus système ont une échelle et des attributs de type nominal. Les moyens de distribution ont une échelle de type nominal et des attributs de type booléen.
+La taille des disques durs a une échelle et des attributs de type numérique (continu). Les types de bus système ont une échelle et des attributs de type nominal. Les moyens de distribution ont une échelle de type nominal et des attributs de type booléen.
 
 
 
@@ -60,20 +63,14 @@ On constate que la base d'implication est contenue dans les règles extraites.
 \subsection*{Question 6}
 
 Il n'est bien sûr pas visuellement exploitable.
-% TODO: repondre suite question
 
 
 
 \section{Base de comics gérée avec Camelis}
 
-\subsection*{Question 7}
-
-
-
-
 \subsection*{Question 8}
 
-Le contexte contient 628 objets qui possèdent 6 attributs.
+Le contexte contient 628 objets qui possèdent 7 attributs (desinateur, éditeur, genre, nom de la série, note sur 5, scénariste et source).
 
 
 \subsection*{Question 9}
@@ -82,9 +79,26 @@ En utilisant la navigation dans la propriété \textit{éditeur}, on trouve que 
 Selon la même méthode appliquée à la propriété \textit{dessinateur}, on détermine que le dessinateur ayant le plus de comics est Corben (Richard).
 
 
+\subsection*{Question 10}
+
+Pour connaître les dessinateurs et les scénaristes des comics les plus appréciés, il faut sélectionner les attributs \textit{Dessinateur}, \textit{Scénariste} et \textit{Note /5 is 4 (2avis)} ou alors de taper la requête \textit{"Scénariste" ? and "Note /5" is  "4 (2avis)" and Dessinateur ?}. Peter Bagge fait, par exemple, partie des dessinateurs des comics préférés des lecteurs.
+
+Pour connaître les dessinateurs et scénaristes des comics les moins appréciés, il faut sélectionner \textit{Note /5 is 1} au lieu de \textit{Note /5 is 4 (2avis)}.
+
+
+\subsection*{Question 11}
+
+Pour savoir quelles sont les séries de comics qui contiennent \textit{Batman} dans leur titre et qui ne sont pas éditées par Panini Comics ni Semic, il faut utiliser la requête : \textit{"Nom série" contains "Batman" and not Editeur is "Semic" and not Editeur is "Panini Comics"}. On trouve alors que \textit{Batman – Année 1} et \textit{Batman – Cris dans la nuit} comme résultats.
+
+
 \subsection*{Question 12}
 
-A l'aide de la requête \textit{not Genre ?}, on trouve que textit{Blondie} n'a pas de genre.
+\`A l'aide de la requête \textit{"Nom série" ? and not Genre ?}, on trouve que textit{Blondie} n'a pas de genre.
+
+
+\subsection*{Question 13}
+
+On utilise la requête \textit{"Nom série" contains "Blanche" or "Nom série" contains "noire" or "Nom série" contains "mort" or "Nom série" contains "vie") and not or "Nom série" contains "une" and not or "Nom série" contains "une"}. On obtient alors par exemple \textit{\`A l'ombre des tours mortes}, \textit{Mon dernier jour au Vietnam}, \textit{Mort@17}, etc.
 
 
 \end{document}
