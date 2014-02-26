@@ -99,5 +99,32 @@ Dans notre modélisation, une transaction correspond à un article, les items co
 Nous avons écrit un script pour former un fichier \textit{ARFF} à partir d'un ensemble d'articles (un article par ligne).
 Les attributs correspondent à la présence ou l'abscence de chacun des mots précédents.
 En appliquant la méthode Apriori, on espère former des règles qui nous indiquent le sujet d'un article en fonction des mots présents dans celui-ci.
+Ainsi pour la liste de mots suivante en rapport avec l'élection présidentielle :
+\begin{lstlisting}
+chirac
+jospin
+le_pen
+mammère
+premier_tour
+second_tour
+deuxième_tour
+élections_présidentielles
+élection
+présidentiel
+\end{lstlisting}
+
+On obtient les règles suivantes selon APriori :
+\begin{lstlisting}
+	1. deuxième_tour=absent 460 ==> mammère=absent 460    conf:(1)
+	2. second_tour=absent 435 ==> mammère=absent 435    conf:(1)
+	3. élections_présidentielles=absent 431 ==> mammère=absent 431    conf:(1)
+	4. second_tour=absent deuxième_tour=absent 430 ==> mammère=absent 430    conf:(1)
+	5. le_pen=absent 426 ==> mammère=absent 426    conf:(1)
+	6. deuxième_tour=absent élections_présidentielles=absent 426 ==> mammère=absent 426    conf:(1)
+	7. premier_tour=absent 425 ==> mammère=absent 425    conf:(1)
+	8. le_pen=absent deuxième_tour=absent 421 ==> mammère=absent 421    conf:(1)
+	9. premier_tour=absent deuxième_tour=absent 421 ==> mammère=absent 421    conf:(1)
+	10. premier_tour=absent 425 ==> deuxième_tour=absent 421    conf:(0.99)
+\end{lstlisting}
 
 \end{document}
